@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Home | Athar</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/main.js"></script>
+<style>
+  /* Internal CSS: rules used only on the home page */
+  .three-columns { column-count: 3; column-gap: 30px; column-rule: 1px solid #3bb3a3; }
+  .stat { font-size: 250%; font-weight: bold; color: #0b6b62; }
+</style>
+<script>
+  // Embedded script: display options (used only on the home page)
+  var fontSize = 100;
+  var isDark = 0;
+
+  function changeFont(step) {
+    fontSize += step;
+    if (fontSize > 130) { fontSize = 130; }
+    if (fontSize < 80) { fontSize = 80; }
+    document.getElementById("top").style.fontSize = fontSize + "%";
+  }
+
+  function toggleTheme() {
+    if (isDark == 0) {
+      document.getElementById("top").style.backgroundColor = "#0f1b24";
+      document.getElementById("top").style.color = "#e8f1ef";
+      document.getElementById("top").style.backgroundImage = "none";
+      document.getElementById("top").className = "dark";
+      isDark = 1;
+    } else {
+      document.getElementById("top").style.backgroundColor = "#f4f8f7";
+      document.getElementById("top").style.color = "#1b2a35";
+      document.getElementById("top").style.backgroundImage = "";
+      document.getElementById("top").className = "";
+      isDark = 0;
+    }
+  }
+</script>
+</head>
+<body id="top" onload="start()">
+<header class="site-header">
+  <a class="brand" href="index.html">Athar</a>
+  <nav>
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About us</a>
+    <a href="login.html">Sign in</a>
+    <a href="signup.html">New account</a>
+  </nav>
+</header>
+<main class="container">
+  <div class="banner-wrap">
+    <span class="badge">Volunteer today</span>
+    <img src="https://plus.unsplash.com/premium_photo-1663076505854-f6575b64df0c?auto=format&fit=crop&w=1400&q=80" width="700" height="220" alt="Athar logo" usemap="#bannermap">
+    <map name="bannermap">
+      <area shape="rect" coords="0,0,700,220" href="about.html" alt="About us">
+    </map>
+  </div>
+  <p id="welcome" class="card" onmouseover="highlight(this)" onmouseout="unhighlight(this)"></p>
+  <p class="center" style="font-style: italic; color: #b8770b;">Every hour you give counts.</p>
+
+  <section id="idea">
+    <article>
+      <h1>The idea behind the platform</h1>
+      <p>Many people want to volunteer but don't know where to start, and many charities need volunteers but can't reach them. <strong>Athar</strong> brings both sides together: it lists opportunities, lets you sign up in one step, and counts your volunteering hours.</p>
+      <h2>Platform benefits</h2>
+      <div class="three-columns">
+        <h3>For the volunteer</h3>
+        <ul>
+          <li>Opportunities near their city</li>
+          <li>Quick sign-up with one click</li>
+          <li>A volunteering hours counter</li>
+        </ul>
+        <h3>For the charity</h3>
+        <ul>
+          <li>Reach more volunteers</li>
+          <li>Organize available seats</li>
+        </ul>
+        <h3>For the community</h3>
+        <ul>
+          <li>More services for those in need</li>
+          <li>A stronger culture of impact</li>
+        </ul>
+      </div>
+      <h2>How do you get started?</h2>
+      <ol>
+        <li>Create an account from the <a href="signup.html">New account</a> page.</li>
+        <li>Choose an opportunity from the <a href="#opportunities">table</a>.</li>
+        <li>Click <mark>Sign me up</mark> and watch your hours grow.</li>
+      </ol>
+      <details>
+        <summary>Who can volunteer?</summary>
+        <p>Anyone who wants to give some of their time.</p>
+      </details>
+    </article>
+  </section>
+
+  <section id="opportunities">
+    <h2>Available opportunities</h2>
+    <p>
+      City:
+      <button class="btn light" onclick="showCity('All')">All</button>
+      <button class="btn light" onclick="showCity('Jeddah')">Jeddah</button>
+      <button class="btn light" onclick="showCity('Makkah')">Makkah</button>
+      <button class="btn light" onclick="showCity('Riyadh')">Riyadh</button>
+      <button class="btn light" onclick="showCity('Remote')">Remote</button>
+    </p>
+    <p id="oppCount"></p>
+    <table>
+      <caption>Opportunities table (seats update when you sign up)</caption>
+      <thead>
+        <tr><th>Opportunity</th><th>Organization</th><th>City</th><th>Date</th><th>Hours</th><th>Seats</th><th>Sign up</th></tr>
+      </thead>
+      <tbody>
+        <tr id="r1"><td>Distribute iftar meals</td><td>Al-Birr Association</td><td id="c1">Jeddah</td><td>2026-11-20</td><td>3</td><td id="seats1">5</td><td><button class="btn" onclick="register(1, 3, 'Distribute iftar meals')">Sign me up</button></td></tr>
+        <tr id="r2"><td>Beach clean-up</td><td>Our Environment Team</td><td id="c2">Jeddah</td><td>2026-11-22</td><td>4</td><td id="seats2">8</td><td><button class="btn" onclick="register(2, 4, 'Beach clean-up')">Sign me up</button></td></tr>
+        <tr id="r3"><td>Teach reading to children</td><td>Neighborhood Library</td><td id="c3">Makkah</td><td>2026-11-25</td><td>2</td><td id="seats3">3</td><td><button class="btn" onclick="register(3, 2, 'Teach reading to children')">Sign me up</button></td></tr>
+        <tr id="r4"><td>Organize the charity book fair</td><td>Insan Association</td><td id="c4">Riyadh</td><td>2026-11-28</td><td>5</td><td id="seats4">6</td><td><button class="btn" onclick="register(4, 5, 'Organize the charity book fair')">Sign me up</button></td></tr>
+        <tr id="r5"><td>Help seniors with appointments</td><td>Care Home</td><td id="c5">Makkah</td><td>2026-12-01</td><td>3</td><td id="seats5">2</td><td><button class="btn" onclick="register(5, 3, 'Help seniors with appointments')">Sign me up</button></td></tr>
+        <tr id="r6"><td>Design awareness posts</td><td>Insan Association</td><td id="c6">Remote</td><td>2026-12-03</td><td>2</td><td id="seats6">10</td><td><button class="btn" onclick="register(6, 2, 'Design awareness posts')">Sign me up</button></td></tr>
+        <tr id="r7"><td>Tech support for the platform</td><td>Al-Birr Association</td><td id="c7">Remote</td><td>2026-12-05</td><td>4</td><td id="seats7">4</td><td><button class="btn" onclick="register(7, 4, 'Tech support for the platform')">Sign me up</button></td></tr>
+      </tbody>
+    </table>
+    <div class="card center">
+      <p>Your total volunteering hours</p>
+      <p class="stat"><span id="hoursCount">0</span> hours</p>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h2>Athar moments</h2>
+    <figure class="gallery">
+      <div id="slideBox">
+        <img src="https://plus.unsplash.com/premium_photo-1681493792027-22c4c22d2067?auto=format&fit=crop&w=720&q=80" width="360" height="220" alt="Volunteering photo">
+        <p>A meal handed out with a smile makes a difference in a whole family's day.</p>
+      </div>
+      <figcaption>Use the buttons to browse the photos.</figcaption>
+    </figure>
+    <button class="btn light" onclick="previousSlide()">Previous</button>
+    <button class="btn" onclick="nextSlide()">Next</button>
+  </section>
+
+  <section id="ideas">
+    <h2>Suggest a volunteering idea</h2>
+    <div class="card">
+      <label for="ideaInput">Your idea</label>
+      <input type="text" id="ideaInput" size="40" placeholder="Example: a clothing donation drive" onfocus="focusField(this)" onblur="blurField(this)">
+      <button class="btn" onclick="addIdea()">Add idea</button>
+      <button class="btn light" onclick="clearIdeas()">Clear list</button>
+      <ul id="ideaList"></ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Display options</h2>
+    <button class="btn light" onclick="changeFont(10)">Bigger font</button>
+    <button class="btn light" onclick="changeFont(-10)">Smaller font</button>
+    <button class="btn light" onclick="toggleTheme()">Dark / light mode</button>
+    <a class="btn" href="#top">Top of page</a>
+  </section>
+</main>
+<footer class="site-footer">
+  <p>&copy; 2026 Athar Platform - CPIS-358 course project | King Abdulaziz University</p>
+  <p><a href="#top">Back to top</a></p>
+</footer>
+</body>
+</html>

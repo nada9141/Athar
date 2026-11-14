@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>New account | Athar</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/main.js"></script>
+</head>
+<body id="top">
+<header class="site-header">
+  <a class="brand" href="index.html">Athar</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About us</a>
+    <a href="login.html">Sign in</a>
+    <a href="signup.html" class="active">New account</a>
+  </nav>
+</header>
+<main class="container">
+  <div class="banner-wrap">
+    <span class="badge">Volunteer today</span>
+    <img src="https://plus.unsplash.com/premium_photo-1663076505854-f6575b64df0c?auto=format&fit=crop&w=1400&q=80" width="700" height="220" alt="Athar logo" usemap="#bannermap">
+    <map name="bannermap">
+      <area shape="rect" coords="0,0,700,220" href="about.html" alt="About us">
+    </map>
+  </div>
+  <section class="form-box card">
+    <h1>Create a volunteer account</h1>
+    <form name="signupForm" onsubmit="return validateSignup()" onreset="resetMessage()">
+      <p><label for="fullname">Full name</label><br>
+      <input type="text" id="fullname" name="fullname" size="35" maxlength="40" autofocus onfocus="focusField(this)" onblur="blurField(this)"></p>
+      <p><label for="email">Email address</label><br>
+      <input type="email" id="email" name="email" size="35" placeholder="name@example.com" required onfocus="focusField(this)" onblur="blurField(this)"></p>
+      <p><label for="phone">Mobile number</label><br>
+      <input type="tel" id="phone" name="phone" size="35" placeholder="05xxxxxxxx" pattern="05[0-9]{8}" required onfocus="focusField(this)" onblur="blurField(this)"></p>
+      <p><label for="city">City</label><br>
+      <select id="city" name="city">
+        <option value="">-- Choose --</option>
+        <option value="Jeddah">Jeddah</option>
+        <option value="Makkah">Makkah</option>
+        <option value="Riyadh">Riyadh</option>
+        <option value="Other">Other</option>
+      </select></p>
+      <p><label for="password">Password</label><br>
+      <input type="password" id="password" name="password" size="35" placeholder="At least 8 characters" pattern=".{8,}" onfocus="focusField(this)" onblur="blurField(this)"></p>
+      <p><label for="confirm">Confirm password</label><br>
+      <input type="password" id="confirm" name="confirm" size="35" onfocus="focusField(this)" onblur="blurField(this)"></p>
+      <p>Preferred field:<br>
+      <input type="radio" id="f1" name="interest" value="education" required> <label for="f1">Education</label>
+      <input type="radio" id="f2" name="interest" value="env"> <label for="f2">Environment</label>
+      <input type="radio" id="f3" name="interest" value="food"> <label for="f3">Food</label>
+      <input type="radio" id="f4" name="interest" value="tech"> <label for="f4">Technology</label></p>
+      <p><input type="checkbox" id="agree" name="agree" required> <label for="agree">I agree to the terms of use</label></p>
+      <p><input type="submit" class="btn" value="Create account">
+      <input type="reset" class="btn light" value="Reset"></p>
+      <p>Already have an account? <a href="login.html">Sign in</a></p>
+    </form>
+    <div id="result"></div>
+  </section>
+</main>
+<footer class="site-footer">
+  <p>&copy; 2026 Athar Platform - CPIS-358 course project | King Abdulaziz University</p>
+  <p><a href="#top">Back to top</a></p>
+</footer>
+</body>
+</html>
